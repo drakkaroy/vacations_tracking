@@ -1,24 +1,19 @@
-import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-  } from "react-router-dom";
-  import Header from './../header/Header';
-  import Home from './home/Home';
-  import Footer from './../footer/Footer';
+import React, { useEffect } from 'react';
+import Header from './../header/Header';
+import Home from './home/Home';
+import Footer from './../footer/Footer';
+import Checklist from '../checklist/checklist';
 
 const Layout = () => {
 
     return(
-        <Router>
+        <>
             <Header />
             <div className="container">
-                content here ...
-                <Home />
+                <Checklist />
             </div>
             <Footer />
-        </Router>
+        </>
     );
 }
 

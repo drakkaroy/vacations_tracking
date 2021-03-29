@@ -1,0 +1,47 @@
+.checklist {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__headers {
+    display: flex;
+    background-color: $gray-bg;
+    div {
+      width: 20%;
+      @include respond-to($bp-m, max) {
+        width: 25%;
+        &:nth-child(5) {
+          display: none;
+        }
+      }
+    }
+  }
+  &__head {
+    padding: $size-s;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+  &__rows {
+    display: flex;
+    flex-direction: column;
+  }
+  &__row {
+    display: flex;
+    border-bottom: $gray-bg 1px solid;
+    div {
+      padding: $size-s;
+      width: 20%;
+      border-right: $gray-bg 1px solid;
+      font-size: 14px;
+      &:nth-child(1) {
+        border-left: $gray-bg 1px solid;
+      }
+      @include respond-to($bp-m, max) {
+        width: 25%;
+        &:nth-child(5) {
+          display: none;
+        }
+      }
+    }
+  }
+}
