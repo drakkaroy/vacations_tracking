@@ -2,10 +2,13 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  background-color: $white;
+  margin: $size-xl 0;
   &__headers {
     display: flex;
-    background-color: $gray-bg;
+
+    background-color: $checklist-table-color;
+    
     div {
       width: 20%;
       @include respond-to($bp-m, max) {
@@ -19,7 +22,7 @@
   &__head {
     padding: $size-s;
     font-size: 14px;
-    text-decoration: underline;
+    font-family: $font-roboto-medium;
   }
   &__rows {
     display: flex;
@@ -27,14 +30,14 @@
   }
   &__row {
     display: flex;
-    border-bottom: $gray-bg 1px solid;
+    border-bottom: $checklist-table-color 1px solid;
     div {
       padding: $size-s;
       width: 20%;
-      border-right: $gray-bg 1px solid;
+      border-right: $checklist-table-color 1px solid;
       font-size: 14px;
       &:nth-child(1) {
-        border-left: $gray-bg 1px solid;
+        border-left: $checklist-table-color 1px solid;
       }
       @include respond-to($bp-m, max) {
         width: 25%;
@@ -42,6 +45,11 @@
           display: none;
         }
       }
+    }
+  }
+  &__options {
+    button {
+      margin: 5px 5px 0 0;
     }
   }
 }

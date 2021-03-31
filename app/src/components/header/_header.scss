@@ -1,2 +1,12 @@
 .header {
+    background-color: $white;
+    border-top: 3px solid $highlight-blue;
+    padding: $size-xs 0;
+    &__logo {
+        max-width: $max-width;
+        width: 100%;
+        img {
+            max-height: 30px;
+        }
+    }
 }

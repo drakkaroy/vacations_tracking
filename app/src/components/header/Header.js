@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import Logo from '../../assets/images/nikola-logo-black.png';
 
 const Header = () => {
 
   return (
     <div className='header'>
-      <div className='header__title'>List</div>
+      <div className='container'>
+        <div className='header__logo'>
+          <img src={Logo} alt="Nokola Digital Lab" />
+        </div>
+      </div>
     </div>
   );
 }

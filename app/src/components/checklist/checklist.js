@@ -1,31 +1,54 @@
 import React, { useEffect, useState } from 'react';
-import { getUsers } from '../../data/services/users';
+//import { getUsers } from '../../data/services/users';
+import axios from 'axios';
+import Moment from 'react-moment';
+import moment from 'moment';
 
-const Checklist = () => {
-
+const Checklist = (props) => {
+    const { updateView, updateUserDetails } = props;
     const [users, setUsers] = useState([]);
+    const currentDay = Date.now();
 
-    // const updateUsers = () => {
-    //     getUsers();
-    // }
-
-    const rows = () => {
-        // updateUsers().then((value) => {
-        //     setUsers(value.users);
-        //     users.map(data => {
-        //         console.log(data.name);
-        //     });
-        // });
-        
-        
+    const showDetail = (event) => {
+        const id = event.target.dataset.id;
+        updateView();
+        updateUserDetails(id);
     }
 
-    useEffect(() => {
-        // getUsers();
-    },[]);
+    const fetchUsers = () => {
+        axios.get('http://127.0.0.1:8000/api/')
+            .then(res => {
+                setUsers(res.data);
+            });
+    }
 
-    
-    // console.log(users);
+    const List = () => {
+        const dataList = users.map(item => {
+            const daysTaken = item.vacations_taken.length;
+            const totalVacationDays = moment(currentDay).diff(moment(item.start_day), 'months');
+            const remaningDays = totalVacationDays - daysTaken;
+            return (
+                <div className='checklist__row' key={item.id}>
+                    <div>{item.user}</div>
+                    <div>
+                        <Moment format="DD MMM YYYY">{item.start_day}</Moment>
+                    </div>
+                    <div>{daysTaken}</div>
+                    <div>{remaningDays}</div>
+                    <div className='checklist__options'>
+                        <button className='btn btn--blue' data-id={item.id} onClick={showDetail}>Detail</button>
+                        <button className='btn btn--green'>Request</button>
+                        <button className='btn btn--green'>Edit</button>
+                    </div>
+                </div>
+            )
+        })
+        return dataList;
+    };
+
+    useEffect(() => {
+        fetchUsers();
+    }, []);
 
     return (
         <div className='checklist'>
@@ -36,22 +59,7 @@ const Checklist = () => {
                 <div className='checklist__head'>Remaining days</div>
                 <div className='checklist__head'>Options</div>
             </div>
-            <div className='checklist__rows'>
-                <div className='checklist__row'>
-                    <div className='name'>Rafael Monroy</div>
-                    <div className='start-day'>2021-18-01</div>
-                    <div className='days-taken'>1</div>
-                    <div className='remaning-days'>5</div>
-                    <div className='options'><a href='#'>Edit</a> <a href='#'>Request</a> <a href='#'>Detail</a></div>
-                </div>
-                <div className='checklist__row'>
-                    <div className='name'>Erick Espinosa</div>
-                    <div className='start-day'>2020-15-06</div>
-                    <div className='days-taken'>4</div>
-                    <div className='remaning-days'>6</div>
-                    <div className='options'><a href='#'>Edit</a> <a href='#'>Request</a> <a href='#'>Detail</a></div>
-                </div>
-            </div>
+            <List />
         </div>
     )
 

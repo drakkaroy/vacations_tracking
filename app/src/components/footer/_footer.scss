@@ -1,0 +1,14 @@
+.footer {
+    background-color: $footer-bg;
+    // temporal fix to move the footer to the bottom
+    // we should remove when be necessary
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    // end of the fix
+    &__copy {
+        padding: $size-m 0;
+        color: $white;
+        font-size: 12px;
+    }
+}

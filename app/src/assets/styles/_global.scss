@@ -1,7 +1,11 @@
+html, body, #root, .App {
+  height: 100%;
+}
 body {
   font-family: $font-roboto-regular;
   font-size: 16px;
   color: $black-font;
+  background-color: $bg-color;
 }
 ul {
   margin: 0;
@@ -10,9 +14,60 @@ ul {
 li {
   list-style: none;
 }
+a {
+  text-decoration: none;
+  color: $highlight-blue;
+  &:hover {
+    color: $highlight-blue-02;
+    text-decoration: underline;
+  }
+}
+
+.App {
+  position: relative;
+}
 
 .container {
-  max-width: 1200px;
+  max-width: $max-width;
   margin: 0 auto;
   padding: 0 $size-s;
+}
+.title {
+  margin: $size-m 0;
+  h1 {
+    margin: 5px 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: normal;
+    font-family: $font-roboto-medium;
+  }
+  &__day {
+    font-size: 16px;
+  }
+}
+.btn {
+  border: none;
+  color: $white;
+  padding: $size-xs $size-s;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  &--green {
+    background-color: $highlight-green-02;
+    &:hover {
+      background-color: $highlight-green-02;
+    }
+  }
+  &--blue {
+    background-color: $highlight-blue;
+    &:hover {
+      background-color: $highlight-blue-03;
+    }
+  }
+  &--red {
+    background-color: #f44336;
+  }
 }
