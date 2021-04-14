@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Moment from 'react-moment';
 import moment from 'moment';
+import UserForm from '../user-form/user-form';
+import DayForm from '../day-form/day-form';
 
 const Checklist = (props) => {
     const { updateView, updateUserDetails } = props;
@@ -16,14 +18,14 @@ const Checklist = (props) => {
     }
 
     const fetchUsers = () => {
-        axios.get('http://127.0.0.1:8000/api/')
+        axios.get('http://127.0.0.1:8000/api/users/')
             .then(res => {
                 setUsers(res.data);
             });
     }
 
     const List = () => {
-        const dataList = users.map(item => {
+        return users.length > 0 && users.map(item => {
             const daysTaken = item.vacations_taken.length;
             const totalVacationDays = moment(currentDay).diff(moment(item.start_day), 'months');
             const remaningDays = totalVacationDays - daysTaken;
@@ -43,7 +45,6 @@ const Checklist = (props) => {
                 </div>
             )
         })
-        return dataList;
     };
 
     useEffect(() => {
@@ -51,16 +52,23 @@ const Checklist = (props) => {
     }, []);
 
     return (
-        <div className='checklist'>
-            <div className='checklist__headers'>
-                <div className='checklist__head'>Name</div>
-                <div className='checklist__head'>Start Day</div>
-                <div className='checklist__head'>Days Taken</div>
-                <div className='checklist__head'>Remaining days</div>
-                <div className='checklist__head'>Options</div>
+        <>
+            <div className='checklist'>
+                <div className='checklist__headers'>
+                    <div className='checklist__head'>Name</div>
+                    <div className='checklist__head'>Start Day</div>
+                    <div className='checklist__head'>Days Taken</div>
+                    <div className='checklist__head'>Remaining days</div>
+                    <div className='checklist__head'>Options</div>
+                </div>
+                <div className='checklist__rows'>
+                    <List />
+                </div>
             </div>
-            <List />
-        </div>
+            <UserForm />
+            <DayForm />
+            <br /><br /><br /><br /><br />
+        </>
     )
 
 };

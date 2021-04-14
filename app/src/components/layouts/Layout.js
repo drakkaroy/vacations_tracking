@@ -29,7 +29,7 @@ const Layout = () => {
                 {view ? <Checklist updateView={updateView} updateUserDetails={updateUserDetails} /> :
                     <Detail updateView={updateView} userId={userDetail} />}
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }
