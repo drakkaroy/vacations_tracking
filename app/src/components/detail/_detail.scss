@@ -7,6 +7,7 @@
     &__headers {
       display: flex;
       background-color: $checklist-table-color;
+      margin-top: $size-m;
       div {
         width: 50%;
       }
@@ -54,9 +55,28 @@
             margin-right: $size-m;
         }
     }
+    &__options {
+        button {
+            margin-right: $size-s;
+        }
+    }
     &__back {
         padding: $size-s 0;
         text-align: right;
         background:$bg-color;
+    }
+    &__popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: #fff;
+        padding: $size-xl;
+        transform: translate(-50%, -50%);
+        border-radius: $size-xs;
+        border: 1px solid rgba(0,0,0,.2);
+        box-shadow: 0 5px 15px rgba(0,0,0,50%);
+    }
+    .react-datepicker__day--disabled {
+        background-color: transparent;
     }
 }

@@ -5,7 +5,9 @@ import axios from 'axios';
 
 import Input from '../input/input';
 
-const UserForm = () => {
+const UserForm = (props) => {
+
+    const { placeholderData, requestType } = props;
 
     const [user, setUser] = useState('');
     const [email, setEmail] = useState('');
@@ -68,14 +70,38 @@ const UserForm = () => {
 
     const saveData = () => {
         console.log('-- saved --');
-        console.log(userData);
-        // axios.post('http://127.0.0.1:8000/api/users/', userData)
-        //     .then(res => {
-        //         console.log(res);
-        //     })
-        //     .catch(error => console.error(error));
+        //console.log(userData);
+        switch (requestType) {
+            case 'post':
+                axios.post('http://127.0.0.1:8000/api/users/', userData)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(error => console.error(error));
+                break;
+            case 'put':
+                axios.put(`http://127.0.0.1:8000/api/users/${placeholderData.id}/`, userData)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(error => console.error(error));
+            default:
+                break;
+        }
         setHandleSubmitStatus('stoped');
+        window.location.reload();
     }
+
+    useEffect(() => {
+        if (placeholderData) {
+            const { user, email, id_number, phone_number, start_day } = placeholderData;
+            setUser(user);
+            setEmail(email);
+            setIdNumber(id_number);
+            setPhoneNumber(phone_number);
+            setStartDay(start_day);
+        }
+    }, []);
 
     useEffect(() => {
         if (handleSubmitStatus === 'sending') saveData();

@@ -31,6 +31,7 @@ a {
   max-width: $max-width;
   margin: 0 auto;
   padding: 0 $size-s;
+  position: relative;
 }
 .title {
   margin: $size-m 0;
@@ -69,5 +70,16 @@ a {
   }
   &--red {
     background-color: #f44336;
+  }
+}
+.link {
+  color: $highlight-blue;
+  font-size: 16px;
+  border: none;
+  padding: 0;
+  border: 0;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
   }
 }

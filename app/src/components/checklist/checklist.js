@@ -11,6 +11,8 @@ const Checklist = (props) => {
     const [users, setUsers] = useState([]);
     const currentDay = Date.now();
 
+    const [view, setView] = useState('checklist');
+
     const showDetail = (event) => {
         const id = event.target.dataset.id;
         updateView();
@@ -38,9 +40,7 @@ const Checklist = (props) => {
                     <div>{daysTaken}</div>
                     <div>{remaningDays}</div>
                     <div className='checklist__options'>
-                        <button className='btn btn--blue' data-id={item.id} onClick={showDetail}>Detail</button>
-                        <button className='btn btn--green'>Request</button>
-                        <button className='btn btn--green'>Edit</button>
+                        <button className='link' data-id={item.id} onClick={showDetail}>Detail</button>
                     </div>
                 </div>
             )
@@ -53,21 +53,30 @@ const Checklist = (props) => {
 
     return (
         <>
-            <div className='checklist'>
-                <div className='checklist__headers'>
-                    <div className='checklist__head'>Name</div>
-                    <div className='checklist__head'>Start Day</div>
-                    <div className='checklist__head'>Days Taken</div>
-                    <div className='checklist__head'>Remaining days</div>
-                    <div className='checklist__head'>Options</div>
-                </div>
-                <div className='checklist__rows'>
-                    <List />
-                </div>
-            </div>
-            <UserForm />
-            <DayForm />
-            <br /><br /><br /><br /><br />
+            {
+                view === 'checklist' ? (
+                    <>
+                        <div><button className='link' onClick={() => setView('userForm')}>Create a new user</button></div>
+                        <div className='checklist'>
+                            <div className='checklist__headers'>
+                                <div className='checklist__head'>Name</div>
+                                <div className='checklist__head'>Start Day</div>
+                                <div className='checklist__head'>Days Taken</div>
+                                <div className='checklist__head'>Remaining days</div>
+                                <div className='checklist__head'>Options</div>
+                            </div>
+                            <div className='checklist__rows'>
+                                <List />
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div><button className='link' onClick={() => setView('checklist')}>Dashboard</button></div>
+                        <UserForm requestType='post' />
+                    </>
+                )
+            }
         </>
     )
 
