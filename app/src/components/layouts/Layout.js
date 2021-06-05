@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from './../header/Header';
 import Footer from './../footer/Footer';
-import Checklist from '../checklist/checklist';
+import Dashboard from '../dashboard/dashboard';
 import Moment from 'react-moment';
 import Detail from '../detail/detail'
 
@@ -26,7 +26,7 @@ const Layout = () => {
                     <h1>Vacations Tracking</h1>
                     <div className='title__day'>Date: <Moment format="DD MMM YYYY">{currentDay}</Moment></div>
                 </div>
-                {view ? <Checklist updateView={updateView} updateUserDetails={updateUserDetails} /> :
+                {view ? <Dashboard updateView={updateView} updateUserDetails={updateUserDetails} /> :
                     <Detail updateView={updateView} userId={userDetail} />}
             </div>
             {/* <Footer /> */}

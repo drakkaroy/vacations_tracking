@@ -3,7 +3,7 @@
     background-color: $white;
     &__headers {
         display: flex;
-        background-color: $checklist-table-color;
+        background-color: $table-color;
     }
 
     // This is the col in the headers part
@@ -20,7 +20,7 @@
 
     &__row {
         display: flex;
-        border-bottom: $checklist-table-color 1px solid;
+        border-bottom: $table-color 1px solid;
     }
 
     // This is the col in the rows part
@@ -28,9 +28,9 @@
         padding: $size-s;
         font-size: 14px;
         line-height: 1.3;
-        border-right: $checklist-table-color 1px solid;
+        border-right: $table-color 1px solid;
         &:nth-child(1) {
-            border-left: $checklist-table-color 1px solid;
+            border-left: $table-color 1px solid;
         }
     }
 }
