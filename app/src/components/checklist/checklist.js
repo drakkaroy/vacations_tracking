@@ -32,14 +32,14 @@ const Checklist = (props) => {
             const totalVacationDays = moment(currentDay).diff(moment(item.start_day), 'months');
             const remaningDays = totalVacationDays - daysTaken;
             return (
-                <div className='checklist__row' key={item.id}>
-                    <div>{item.user}</div>
-                    <div>
+                <div className='table__row' key={item.id}>
+                    <div className='table__col'>{item.user}</div>
+                    <div className='table__col'>
                         <Moment format="DD MMM YYYY">{item.start_day}</Moment>
                     </div>
-                    <div>{daysTaken}</div>
-                    <div>{remaningDays}</div>
-                    <div className='checklist__options'>
+                    <div className='table__col'>{daysTaken}</div>
+                    <div className='table__col'>{remaningDays}</div>
+                    <div className='table__col checklist__options'>
                         <button className='link' data-id={item.id} onClick={showDetail}>Detail</button>
                     </div>
                 </div>
@@ -55,21 +55,21 @@ const Checklist = (props) => {
         <>
             {
                 view === 'checklist' ? (
-                    <>
+                    <div className='checklist'>
                         <div><button className='link' onClick={() => setView('userForm')}>Create a new user</button></div>
-                        <div className='checklist'>
-                            <div className='checklist__headers'>
-                                <div className='checklist__head'>Name</div>
-                                <div className='checklist__head'>Start Day</div>
-                                <div className='checklist__head'>Days Taken</div>
-                                <div className='checklist__head'>Remaining days</div>
-                                <div className='checklist__head'>Options</div>
+                        <div className='table'>
+                            <div className='table__headers'>
+                                <div className='table__header'>Name</div>
+                                <div className='table__header'>Start Day</div>
+                                <div className='table__header'>Days Taken</div>
+                                <div className='table__header'>Remaining days</div>
+                                <div className='table__header'>Options</div>
                             </div>
-                            <div className='checklist__rows'>
+                            <div className='table__rows'>
                                 <List />
                             </div>
                         </div>
-                    </>
+                    </div>
                 ) : (
                     <>
                         <div><button className='link' onClick={() => setView('checklist')}>Dashboard</button></div>

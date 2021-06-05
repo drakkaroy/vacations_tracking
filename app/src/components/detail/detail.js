@@ -27,9 +27,9 @@ const Detail = (props) => {
         const dates = user.vacations_taken || [];
         const rows = dates.map((item, index) => {
             return (
-                <div className='detail__row' key={index}>
-                    <div><Moment format="DD MMM YYYY">{item.day}</Moment></div>
-                    <div>{item.description}</div>
+                <div className='table__row' key={index}>
+                    <div className='table__col'><Moment format="DD MMM YYYY">{item.day}</Moment></div>
+                    <div className='table__col'>{item.description}</div>
                 </div>
             )
         });
@@ -38,15 +38,15 @@ const Detail = (props) => {
 
     const DetailView = () => {
         return (
-            <>
-                <div className='detail__headers'>
-                    <div className='checklist__head'>Day Taken</div>
-                    <div className='checklist__head'>Description</div>
+            <div className='table'>
+                <div className='table__headers'>
+                    <div className='table__header'>Day Taken</div>
+                    <div className='table__header'>Description</div>
                 </div>
-                <div className='detail_rows'>
+                <div className='table_rows'>
                     <Rows />
                 </div>
-            </>
+            </div>
         );
     }
 

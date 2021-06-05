@@ -75,38 +75,44 @@ const DayForm = (props) => {
     };
 
     return (
-        <div className='user-form'>
+        <div className='table-form'>
             <form onSubmit={handleSubmit}>
-                <div className='user-form__headers'>
-                    <div className='user-form__head'>Days Request</div>
-                </div>
-                <div className='user-form__rows'>
-                    <div className='user-form__row'>
-                        <div className='form__row'>
-                            <DatePicker
-                                selected={startDate}
-                                onChange={updateDate}
-                                startDate={startDate}
-                                endDate={endDate}
-                                selectsRange
-                                filterDate={isWeekDay}
-                                inline
-                            />
+                <div className='table'>
+                    <div className='table__headers'>
+                        <div className='table__header'>Days Request</div>
+                    </div>
+                    <div className='table__rows'>
+                        <div className='table__row'>
+                            <div className='table__col'>
+                                <div className='form__row'>
+                                    <DatePicker
+                                        selected={startDate}
+                                        onChange={updateDate}
+                                        startDate={startDate}
+                                        endDate={endDate}
+                                        selectsRange
+                                        filterDate={isWeekDay}
+                                        inline
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='table__row'>
+                            <div className='table__col'>
+                                <div className='form__row'>
+                                    <label htmlFor='description' className='form__label'>Description</label>
+                                    <textarea
+                                        type='text'
+                                        id='description'
+                                        className='form__input'
+                                        value={description}
+                                        onChange={event => handleOnChange(event, setDescription(event.target.value))}></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className='user-form__row'>
-                        <div className='form__row'>
-                            <label htmlFor='description' className='form__label'>Description</label>
-                            <textarea
-                                type='text'
-                                id='description'
-                                className='form__input'
-                                value={description}
-                                onChange={event => handleOnChange(event, setDescription(event.target.value))}></textarea>
-                        </div>
-                    </div>
                 </div>
-                <div className='user-form__submit'>
+                <div className='table-form__submit'>
                     <button className='btn btn--green'>Submit</button>
                 </div>
             </form>

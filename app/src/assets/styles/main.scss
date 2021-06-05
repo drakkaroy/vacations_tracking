@@ -3,6 +3,8 @@
 @import './global';
 @import './mixins';
 @import './forms';
+@import './table';
+
 
 @import "~react-datepicker/dist/react-datepicker.css";
 
@@ -10,4 +12,5 @@
 @import './../../components/footer/footer';
 @import './../../components/checklist/checklist';
 @import './../../components/detail/detail';
-@import './../../components/user-form/user-form';
+
+@import './table-form';

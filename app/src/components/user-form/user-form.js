@@ -108,69 +108,81 @@ const UserForm = (props) => {
     }, [userData]);
 
     return (
-        <div className='user-form'>
+        <div className='table-form'>
             <form onSubmit={handleSubmit}>
-                <div className='user-form__headers'>
-                    <div className='user-form__head'>Add User</div>
+                <div className='table'>
+                    <div className='table__headers'>
+                        <div className='table__header'>Add User</div>
+                    </div>
+                    <div className='table__rows'>
+                        <div className='table__row'>
+                            <div className='table__col'>
+                                <div className='form__row'>
+                                    <label htmlFor='user' className='form__label'>Name</label>
+                                    <Input
+                                        id='user'
+                                        name='user'
+                                        value={user}
+                                        onChange={event => handleOnChange(event, setUser(event.target.value))}
+                                        handleInputStatus={handleInputStatus}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='table__row'>
+                            <div className='table__col'>
+                                <div className='form__row'>
+                                    <label htmlFor='email' className='form__label'>Email</label>
+                                    <Input
+                                        id='email'
+                                        name='email'
+                                        value={email}
+                                        onChange={event => handleOnChange(event, setEmail(event.target.value))}
+                                        handleInputStatus={handleInputStatus} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='table__row'>
+                            <div className='table__col'>
+                                <div className='form__row'>
+                                    <label htmlFor='idNumber' className='form__label'>Id Number</label>
+                                    <Input
+                                        id='idNumber'
+                                        name='id_number'
+                                        value={idNumber}
+                                        onChange={event => handleOnChange(event, setIdNumber(event.target.value))}
+                                        handleInputStatus={handleInputStatus} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='table__row'>
+                            <div className='table__col'>
+                                <div className='form__row'>
+                                    <label htmlFor='phoneNumber' className='form__label'>Phone Number</label>
+                                    <Input
+                                        id='phoneNumber'
+                                        name='phone_number'
+                                        value={phoneNumber}
+                                        onChange={event => handleOnChange(event, setPhoneNumber(event.target.value))}
+                                        handleInputStatus={handleInputStatus} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='table__row'>
+                            <div className='table__col'>
+                                <div className='form__row'>
+                                    <label htmlFor='startDay' className='form__label'>Start Day</label>
+                                    <DatePicker
+                                        selected={startDate}
+                                        onChange={date => updateDate(date)}
+                                        className={datePickerClass}
+                                        dateFormat="yyyy/MM/dd" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className='user-form__rows'>
-                    <div className='user-form__row'>
-                        <div className='form__row'>
-                            <label htmlFor='user' className='form__label'>Name</label>
-                            <Input
-                                id='user'
-                                name='user'
-                                value={user}
-                                onChange={event => handleOnChange(event, setUser(event.target.value))}
-                                handleInputStatus={handleInputStatus}
-                            />
-                        </div>
-                    </div>
-                    <div className='user-form__row'>
-                        <div className='form__row'>
-                            <label htmlFor='email' className='form__label'>Email</label>
-                            <Input
-                                id='email'
-                                name='email'
-                                value={email}
-                                onChange={event => handleOnChange(event, setEmail(event.target.value))}
-                                handleInputStatus={handleInputStatus} />
-                        </div>
-                    </div>
-                    <div className='user-form__row'>
-                        <div className='form__row'>
-                            <label htmlFor='idNumber' className='form__label'>Id Number</label>
-                            <Input
-                                id='idNumber'
-                                name='id_number'
-                                value={idNumber}
-                                onChange={event => handleOnChange(event, setIdNumber(event.target.value))}
-                                handleInputStatus={handleInputStatus} />
-                        </div>
-                    </div>
-                    <div className='user-form__row'>
-                        <div className='form__row'>
-                            <label htmlFor='phoneNumber' className='form__label'>Phone Number</label>
-                            <Input
-                                id='phoneNumber'
-                                name='phone_number'
-                                value={phoneNumber}
-                                onChange={event => handleOnChange(event, setPhoneNumber(event.target.value))}
-                                handleInputStatus={handleInputStatus} />
-                        </div>
-                    </div>
-                    <div className='user-form__row'>
-                        <div className='form__row'>
-                            <label htmlFor='startDay' className='form__label'>Start Day</label>
-                            <DatePicker
-                                selected={startDate}
-                                onChange={date => updateDate(date)}
-                                className={datePickerClass}
-                                dateFormat="yyyy/MM/dd" />
-                        </div>
-                    </div>
-                </div>
-                <div className='user-form__submit'>
+                <div className='table-form__submit'>
                     <input className='btn btn--green' type='submit' value='Submit'></input>
                 </div>
             </form>

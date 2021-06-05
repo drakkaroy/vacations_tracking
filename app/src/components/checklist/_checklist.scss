@@ -1,55 +1,22 @@
 .checklist {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: $white;
-  margin: $size-m 0;
-  &__headers {
-    display: flex;
-
-    background-color: $checklist-table-color;
-    
-    div {
-      width: 20%;
-      @include respond-to($bp-m, max) {
-        width: 25%;
-        &:nth-child(5) {
-          display: none;
+    .table {
+        &__header {
+            width: 20%;
+            @include respond-to($bp-m, max) {
+                width: 33%;
+                &:nth-child(2), &:nth-child(3) {
+                    display: none;
+                }
+            }
         }
-      }
-    }
-  }
-  &__head {
-    padding: $size-s;
-    font-size: 14px;
-    font-family: $font-roboto-medium;
-  }
-  &__rows {
-    display: flex;
-    flex-direction: column;
-  }
-  &__row {
-    display: flex;
-    border-bottom: $checklist-table-color 1px solid;
-    div {
-      padding: $size-s;
-      width: 20%;
-      border-right: $checklist-table-color 1px solid;
-      font-size: 14px;
-      &:nth-child(1) {
-        border-left: $checklist-table-color 1px solid;
-      }
-      @include respond-to($bp-m, max) {
-        width: 25%;
-        &:nth-child(5) {
-          display: none;
+        &__col {
+            width: 20%;
+            @include respond-to($bp-m, max) {
+                width: 33%;
+                &:nth-child(2), &:nth-child(3) {
+                    display: none;
+                }
+            }
         }
-      }
     }
-  }
-  &__options {
-    button {
-      margin: 5px 5px 0 0;
-    }
-  }
 }

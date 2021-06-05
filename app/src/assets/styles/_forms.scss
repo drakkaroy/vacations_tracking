@@ -2,11 +2,6 @@
     &__row {
         display: flex;
         flex-direction: column;
-        padding: $size-s;
-        width: 100%;
-        border: $checklist-table-color 1px solid;
-        border-top: 0;
-        font-size: 14px;
     }
     &__label {
         display: inline-block;

@@ -1,0 +1,10 @@
+.table-form {
+    .table {
+        &__header, &__col {
+            width: 100%;
+        }
+    }
+    &__submit {
+        text-align: right;
+    }
+}
