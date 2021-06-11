@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-//import { getUsers } from '../../data/services/users';
-import axios from 'axios';
+import { userRequest } from '../../data/services/users';
 import Moment from 'react-moment';
 import moment from 'moment';
 import UserForm from '../user-form/user-form';
@@ -19,11 +18,9 @@ const Dashboard = (props) => {
         updateUserDetails(id);
     }
 
-    const fetchUsers = () => {
-        axios.get('http://127.0.0.1:8000/api/users/')
-            .then(res => {
-                setUsers(res.data);
-            });
+    const fetchUsers = async () => {
+        const users = await userRequest();
+        setUsers(users);
     }
 
     const List = () => {

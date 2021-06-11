@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { userRequest } from '../../data/services/users';
 import DatePicker from "react-datepicker";
 import moment from 'moment';
-import axios from 'axios';
-
 import Input from '../input/input';
 
 const UserForm = (props) => {
@@ -68,23 +67,13 @@ const UserForm = (props) => {
         }
     }
 
-    const saveData = () => {
-        console.log('-- saved --');
-        //console.log(userData);
+    const saveData = async () => {
         switch (requestType) {
             case 'post':
-                axios.post('http://127.0.0.1:8000/api/users/', userData)
-                    .then(res => {
-                        console.log(res);
-                    })
-                    .catch(error => console.error(error));
+                await userRequest({ method: 'POST', body: userData });
                 break;
             case 'put':
-                axios.put(`http://127.0.0.1:8000/api/users/${placeholderData.id}/`, userData)
-                    .then(res => {
-                        console.log(res);
-                    })
-                    .catch(error => console.error(error));
+                await userRequest({ id: placeholderData.id, method: 'PUT', body: userData });
             default:
                 break;
         }

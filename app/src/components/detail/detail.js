@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { userRequest } from '../../data/services/users';
 import Moment from 'react-moment';
 import UserForm from '../user-form/user-form';
 import DayForm from '../day-form/day-form';
@@ -16,11 +16,9 @@ const Detail = (props) => {
         updateView();
     }
 
-    const fetchUser = () => {
-        axios.get(`http://127.0.0.1:8000/api/users/${userId}/`)
-            .then(res => {
-                setUser(res.data);
-            });
+    const fetchUser = async () => {
+        const user = await userRequest({ id: userId });
+        setUser(user);
     }
 
     const Rows = () => {
@@ -74,8 +72,7 @@ const Detail = (props) => {
 
     useEffect(() => {
         if (deleteUserState) {
-            // axios.delete(`http://127.0.0.1:8000/api/days/${user.id}/`);
-            axios.delete(`http://127.0.0.1:8000/api/users/${user.id}/`);
+            userRequest({ id: user.id, method: 'DELETE' });
             window.location.reload();
         }
     }, [deleteUserState])
